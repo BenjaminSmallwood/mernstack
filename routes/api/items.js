@@ -3,7 +3,15 @@ const router = express.Router();
 
 // Item Model
 const Item = require('../../models/Item');
+// const { reset } = require('nodemon');
 
+// @route   GET api/items
+// @desc    GET All Items
+// @access  Public
+router.get('/', (req, res) => {
+    Item.find()
+        .sort({ date: -1 })
+        .then(items => res.json(items));
+});
 
-
-module.export = router;
+module.exports = router;
